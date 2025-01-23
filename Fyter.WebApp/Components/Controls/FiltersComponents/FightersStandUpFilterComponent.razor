@@ -1,0 +1,306 @@
+@* Punch Speed and Punch Power *@
+<div class="row mb-4">
+    @* Punch Speed *@
+    <div class="col">
+        <label for="punchSpeedRange" class="form-label">Punch Speed</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinPunchSpeed"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxPunchSpeed"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetPunchSpeed" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Punch Power *@
+    <div class="col">
+        <label for="punchPowerRange" class="form-label">Punch Power</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinPunchPower"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxPunchPower"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetPunchPower" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Accuracy and Blocking *@
+<div class="row mb-4">
+    @* Accuracy *@
+    <div class="col">
+        <label for="accuracy" class="form-label">Accuracy</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinAccuracy"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxAccuracy"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetAccuracy" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Blocking *@
+    <div class="col">
+        <label class="form-label">Blocking</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinBlocking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxBlocking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetBlocking" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Head Movement and FootWork *@
+<div class="row mb-4">
+    @* Head Movement *@
+    <div class="col">
+        <label class="form-label">Head Movement</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinHeadMovement"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxHeadMovement"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetHeadMovement" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Foot Work *@
+    <div class="col">
+        <label class="form-label">Foot Work</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinFootWork"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxFootWork"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetFootWork" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Switch Stance and Takedown Defense *@
+<div class="row mb-4">
+    @* Switch Stance *@
+    <div class="col">
+        <label class="form-label">Switch Stance</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinSwitchStance"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxSwitchStance"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetSwitchStance" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Takedown Defense *@
+    <div class="col">
+        <label class="form-label">Takedown Defense</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinTakedownDefense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxTakedownDefense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetTakedownDefense" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Kick Power and Kick Speed *@
+<div class="row mb-4">
+    @* Kick Power *@
+    <div class="col">
+        <label class="form-label">Kick Power</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinKickPower"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxKickPower"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetKickPower" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Kick Speed *@
+    <div class="col">
+        <label class="form-label">Kick Speed</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="StandUpFilter.MinKickSpeed"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="StandUpFilter.MaxKickSpeed"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetKickSpeed" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex mx-auto mt-5">
+    <div class="col">
+        <button
+            type="button"
+            class="btn btn-primary "
+            data-bs-dismiss="offcanvas"
+            aria-label="Close">
+                View Fighters
+        </button>
+    </div>
+
+    <div class="col">
+        <button
+            type="button"
+            onclick="@Reset"
+            class="btn btn-warning"
+            aria-label="Close">
+               Reset Filter
+        </button>
+    </div>
+</div>

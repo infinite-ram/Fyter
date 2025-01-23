@@ -1,0 +1,106 @@
+@page "/fighterrequests"
+@rendermode InteractiveServer
+
+@attribute [Authorize]
+
+<div class="d-flex justify-content-end mt-4">
+    <a href="addfighterrequest" class="btn btn-lg btn-success">
+        <i class="bi bi-plus"></i> Request Fighter
+    </a>
+</div>
+
+<SearchFightersListComponent
+    Title="Fighters"
+    SubTitle="Status"
+    TotalResults="totalResults"
+    OnSearchInput="HandleOnSearchInput"/>
+
+<div class="mb-3">
+    <FightersStatusFilterComponent RefreshGrid="RefreshGrid"/>
+    <FighterRequestViewFilterComponent RefreshGrid="RefreshGrid"/>
+</div>
+
+
+<div class="container mx-4 justify-content-center d-flex">
+    <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Theme="responsive">
+        <PropertyColumn
+            Title="Fighter Name"
+            Property="@(f => f.Name)"
+            Sortable="true"
+            Class="fighter-name"/>
+        <PropertyColumn
+            Title="Status"
+            Property="@(f => f.UpdateStatusType.GetDisplayName())"
+            Sortable="true"
+            Class=""/>
+        <PropertyColumn
+            Title="Created At"
+            Property="@(f => f.DateCreated)"
+            Sortable="true"
+            Class=""/>
+        <TemplateColumn Title="Action" Class="fighter-details">
+            @{
+                var isAuthorized = context.UserId == currentUserId;
+                var isAdded = context.UpdateStatusType == FighterUpdateStatusEnum.NeedToBeAdded;
+                var isEdited = context.UpdateStatusType == FighterUpdateStatusEnum.NeedToBeUpdated;
+            }
+            @if (isAuthorized && isAdded)
+            {
+                <div class="btn-group" style="width: 30%;">
+                    <button
+                        onclick="@(() => NavigateToFighter(context))"
+                        type="button" class="btn btn-success" >
+                        Add
+                    </button>
+                    <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="visually-hidden"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item pointer" onclick="@(() => EditFighterRequest(context))">Edit Name</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item pointer" id="delete" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                               onclick="@(() => SelectFighterRequest(context))">
+                                Delete
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            }
+            else if (isAuthorized && isEdited)
+            {
+                <a class="btn btn-warning text-center"  @onclick="() => NavigateToEditFighter(context)">
+                    Update
+                </a>
+            }
+        </TemplateColumn>
+    </QuickGrid>
+</div>
+
+<Paginator State="@pagination"/>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete the following:
+                <br>
+                <strong>@selectedFighterRequest.FullName</strong>?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button
+                    type="button" class="btn btn-danger"
+                    onclick="@(() => DeleteFighterRequest(selectedFighterRequest))">
+                    Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

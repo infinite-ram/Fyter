@@ -1,0 +1,250 @@
+@* TakeDowns and Top Control *@
+<div class="row mb-4">
+    @* TakeDowns *@
+    <div class="col">
+        <label class="form-label">Take Downs</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinTakeDown"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxTakeDown"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetTakeDown" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Top Control *@
+    <div class="col">
+        <label class="form-label">Top Control</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinTopControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxTopControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetTopControl" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Bottom Control and Sub. Offense *@
+<div class="row mb-4">
+    @* Bottom Control *@
+    <div class="col">
+        <label class="form-label">Bottom Control</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinBottomControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxBottomControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetBottomControl" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Sub. Offense *@
+    <div class="col">
+        <label class="form-label">Sub. Offense</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinSubmissionOffense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxSubmissionOffense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetSubOf" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Sub. Def and Ground Striking *@
+<div class="row mb-4">
+    @* Sub. Def *@
+    <div class="col">
+        <label class="form-label">Sub. Defense</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinSubmissionDefense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxSubmissionDefense"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetSubDef" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Ground Striking *@
+    <div class="col">
+        <label class="form-label">Ground Striking</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinGroundStriking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxGroundStriking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetGroundStriking" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Clinch Striking and Clinch Control *@
+<div class="row mb-4">
+    @* Clinch Striking *@
+    <div class="col">
+        <label class="form-label">Clinch Striking</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinClinchStriking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxClinchStriking"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetClinchStriking" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Clinch Control *@
+    <div class="col">
+        <label class="form-label">Clinch Control</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="GrapplingFilter.MinClinchControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="GrapplingFilter.MaxClinchControl"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetClinchControl" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+
+<div class="row d-flex mx-auto mt-5">
+    <div class="col">
+        <button
+            type="button"
+            class="btn btn-primary "
+            data-bs-dismiss="offcanvas"
+            aria-label="Close">
+                View Fighters
+        </button>
+    </div>
+
+    <div class="col">
+        <button
+            type="button"
+            onclick="@Reset"
+            class="btn btn-warning"
+            aria-label="Close">
+               Reset Filter
+        </button>
+    </div>
+</div>

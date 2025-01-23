@@ -1,0 +1,24 @@
+@for (int i = 1; i <= Math.Floor(Stars); i++)
+{
+    @if (IsOutedated)
+    {
+        <i class="bi bi-star-fill text-warning"></i>
+    }
+    else
+    {
+        <i class="bi bi-star-fill text-primary"></i>
+    }
+}
+
+@if (Stars % 1 != 0)
+{
+
+    @if (IsOutedated)
+    {
+        <i class="bi bi-star-half text-warning"></i>
+    }
+    else
+    {
+        <i class="bi bi-star-half text-primary"></i>
+    }
+}

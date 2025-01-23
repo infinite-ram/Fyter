@@ -1,0 +1,15 @@
+@if (AuthenticationStateTask == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    if (IsAuthenticated)
+    {
+        <NotAuthorized />
+    }
+    else
+    {
+        <NotAuthenticated />
+    }
+}

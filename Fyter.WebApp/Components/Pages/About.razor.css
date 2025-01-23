@@ -1,0 +1,18 @@
+.callout {
+  color: var(--bs-info-text-emphasis);
+}
+
+a {
+  color: #004399;
+  text-decoration: none;
+  text-decoration-thickness: 1.3px;
+}
+
+@media (min-width: 500px) {
+  .alert {
+    width: 75%;
+  }
+}
+.alert {
+  border-left: 9px solid #758ca9 !important;
+}

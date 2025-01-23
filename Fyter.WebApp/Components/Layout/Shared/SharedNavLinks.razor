@@ -1,0 +1,77 @@
+<div class="nav-item px-3 mt-2">
+    <NavLink class="nav-link px-4" href="" Match="NavLinkMatch.All">
+        <h5 class="fa-solid fa-house" aria-hidden="true"></h5> Home
+    </NavLink>
+</div>
+
+<div class="nav-item px-3">
+    <NavLink class="nav-link px-4" href="addfighter">
+        <h5 class="fa-solid fa-user-ninja" aria-hidden="true"></h5> Add Fighter
+    </NavLink>
+</div>
+
+<div class="nav-item px-3">
+    <NavLink class="nav-link px-4" href="fighterrequests">
+        <h5 class="fa-solid fa-arrows-rotate" aria-hidden="true"></h5> Update Fighters
+    </NavLink>
+</div>
+
+<div class="nav-item px-3 top-nav">
+    <NavLink class="nav-link px-4" href="about">
+        <h5 class="fa-solid bi bi-patch-question-fill" aria-hidden="true"></h5> About
+    </NavLink>
+</div>
+
+<hr class="d-flex mx-auto mt-4 mb-4">
+
+<AuthorizeView>
+    <Authorized>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link px-4" href="Account/Manage">
+                <h5 class="fa-solid fa-circle-user" aria-hidden="true"></h5> @context?.User?.Identity?.Name
+            </NavLink>
+        </div>
+
+        @if(isAdmin)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link px-4" href="Account/ManageUsers">
+                    <h5 class="fa-solid fa-user-gear" aria-hidden="true"></h5> Manage Users
+                </NavLink>
+            </div>
+        }
+
+        @if(isAdmin)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link px-4" href="/Account/ManageFighterRequests">
+                    <h5 class="fa-solid fa-list-check" aria-hidden="true"></h5> Manage Permissions
+                </NavLink>
+            </div>
+        }
+
+        <div class="nav-item px-3">
+            <form action="Account/Logout" method="post">
+                <AntiforgeryToken />
+                <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                <button type="submit" class="nav-link px-4">
+                    <h5 class="fa-solid fa-circle-left" aria-hidden="true"></h5> Logout
+                </button>
+            </form>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link px-4" href="Account/Register">
+                <h5 class="fa-solid fa-user-plus" aria-hidden="true"></h5> Register
+            </NavLink>
+        </div>
+        <div class="nav-item px-3">
+            <NavLink class="nav-link px-4" href="Account/Login">
+                <h5 class="fa-solid fa-circle-right" aria-hidden="true"></h5> Login
+            </NavLink>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+

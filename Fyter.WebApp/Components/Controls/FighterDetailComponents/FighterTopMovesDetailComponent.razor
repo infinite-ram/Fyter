@@ -1,0 +1,21 @@
+@using Fyter.CoreBusiness.FighterModel
+
+@if(Fighter.TopMoves != null && Fighter.TopMoves.Count > 0)
+{
+
+    <div class="d-flex align-items-center gap-2">
+        <h2 class="fw-bold mb-4">Top Moves</h2>
+        <OutdatedStatusComponent Fighter="Fighter" PropertyPath="TopMoves" />
+    </div>
+
+    @foreach (var tm in Fighter.TopMoves)
+    {
+        <div>
+            <FighterTopMoveAttributeComponent
+                Label="Top Move"
+                Stars="@tm.Stars"
+                MoveName="@tm.MoveName" />
+        </div>
+    }
+
+}

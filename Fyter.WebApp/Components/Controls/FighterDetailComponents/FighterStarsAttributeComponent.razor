@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-5">
+        <span class="fw-bold">@Label</span>
+    </div>
+    <div class="col">
+        <DisplayFighterStars Stars="@Stars" IsOutedated="isStarsOuted"/>
+        <OutdatedStatusComponent
+            Fighter="@Fighter"
+            StarsRatingOutdatedProp="@StarsRatingOutdatedProp"
+            OnOutdated="HandleOutdated"
+        />
+
+        <span style="margin-left:5px;">
+            <strong class="@outdatedColor"> @(Value.HasValue ? Value.Value.ToString() : Stars.ToString()) </strong>
+            <small class="@outdatedColor"> @ComputeOutOf() </small>
+
+            <OutdatedStatusComponent
+                Fighter="@Fighter"
+                RatingOutdatedProp="@RatingOutdatedProp"
+                OnOutdated="HandleOutdated"
+            />
+            <OutdatedStatusComponent
+                Fighter="@Fighter"
+                PropertyPath="@OutdatedProp"
+            />
+        </span>
+
+    </div>
+</div>

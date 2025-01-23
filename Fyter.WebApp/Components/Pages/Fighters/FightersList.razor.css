@@ -1,0 +1,64 @@
+::deep .quickgrid[theme="responsive"] {
+  width: 100%;
+  font-size: 117%;
+}
+
+/* Apply styles specifically to QuickGrid with theme "responsive" */
+::deep .quickgrid[theme="responsive"] th,
+::deep .quickgrid[theme="responsive"] td {
+  display: table-cell;
+  padding: 8px; /* Add padding to each cell */
+}
+
+::deep .quickgrid[theme="responsive"] .col-title {
+  font-weight: bold;
+}
+
+::deep .quickgrid[theme="responsive"] .btn-title {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #0e151c;
+  --bs-btn-border-color: #2c3e50;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #253544;
+  --bs-btn-hover-border-color: #233240;
+  --bs-btn-focus-shadow-rgb: 76, 91, 106;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #233240;
+  --bs-btn-active-border-color: #212f3c;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: #2c3e50;
+  --bs-btn-disabled-border-color: #2c3e50;
+}
+
+@media (min-width: 768.8px) {
+  ::deep .quickgrid[theme="responsive"] .fighter-name .mobile-view {
+    display: none;
+  }
+}
+
+/* Hide all columns except "Fighter Name" on smaller screens */
+@media (max-width: 768px) {
+  ::deep .quickgrid[theme="responsive"] .fighter-name .big-view {
+    display: none;
+  }
+  ::deep .quickgrid[theme="responsive"] {
+    width: 100%;
+  }
+
+  ::deep .quickgrid[theme="responsive"] .col-title-text {
+    font-size: 35px;
+    margin-top: 18px;
+    font-weight: 600;
+  }
+
+  ::deep .quickgrid[theme="responsive"] .fighter-detail-btn,
+  ::deep .quickgrid[theme="responsive"] .fighter-style,
+  ::deep .quickgrid[theme="responsive"] .fighter-stars,
+  ::deep .quickgrid[theme="responsive"] .punch-speed,
+  ::deep .quickgrid[theme="responsive"] .kick-speed,
+  ::deep .quickgrid[theme="responsive"] .cardio,
+  ::deep .quickgrid[theme="responsive"] .division {
+    display: none;
+  }
+}

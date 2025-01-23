@@ -1,0 +1,134 @@
+@page "/about"
+
+<div class="container mt-4">
+    <div class="mb-5">
+        <h2 class="fw-bold text-primary">About This Project</h2>
+
+        <div>
+            <p>
+                Welcome to <strong>Fyter</strong>, an open source web application dedicated to
+                EA Sports UFC5 players that lets you explore, add, edit, and keep track of UFC5 fighters in one place.
+            </p>
+            <p>
+                This software is designed as a <strong>free, community-sourced data contribution</strong> tool,
+                enabling public collaborative editing to provide players with dynamic experience to efficiently
+                search for and manage fighter data.
+            </p>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h2 class="fw-bold text-primary">What’s the Goal?</h2>
+        <div class="">
+            <p>
+                This web application software aims to <strong>centralize EA UFC5 fighters stats information</strong>.
+                Players can <strong>search for specific fighter names, view or update fighter stats, request to add new fighters</strong>
+                and even mark certain fighter stats or attributes as “outdated” until it gets updated by the community.
+            </p>
+
+        </div>
+    </div>
+
+
+    <div class="mb-5">
+        <h2 class="fw-bold text-primary">Key Features</h2>
+        <ul>
+            <li class="mb-2">
+                <strong>Search & Filter: </strong> look up specific fighters by name or apply filters like
+                divisions, perks, fighting styles or in-game fighter stats.
+            </li>
+            <li class="mb-2">
+                <strong>Edit & Update: </strong> If a fighter’s stats need adjusting,
+                simply update the fields, resolve outdated data.
+            </li>
+            <li class="mb-2">
+                <strong>Add Fighters: </strong> Submit new fighters (or their alter egos) through a
+                dedicated form with proper validation.
+            </li>
+            <li class="mb-2">
+                <strong>Outdated Data Alerts: </strong>  If any fighter’s info becomes outdated,
+                there’s an outdated icon ( <i class="text-warning bi bi-exclamation-circle"></i> )
+                to indicate it needs to be updated.
+            </li>
+            <li class="mb-2">
+                <strong>Alter Egos: </strong>  Some fighters have alternate versions.
+                This project supports managing those unique “alter egos,” too.
+            </li>
+            <li class="mb-2">
+                <strong>Requests Fighters: </strong> The system also tracks “Fighter Requests,”
+                so you can add, review, and finalize new fighter.
+            </li>
+            <li class="mb-2">
+                <strong>Smart Filtering: </strong> You can chain multiple filters one after another
+                to really zero in on that perfect fighter.
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="mb-5">
+        <h2 class="fw-bold text-primary">Chained Filtering</h2>
+
+        <div>
+            <p>
+                Get creative with your filters to explore surprising insights about each fighter’s
+               strengths and weaknesses.
+            </p>
+        </div>
+
+        <div class="alert alert-primary" role="alert">
+            <span style="color: #cbe5ff;">
+               Apply multiple filters one after another, refining results as you go.
+            </span>
+        </div>
+    </div>
+
+    <div class="mb-5">
+        <h2 class="fw-bold text-primary">Roles & Access</h2>
+        <div>
+            <p> This web application software includes a role-based system to ensure each user has the right permissions.
+            </p>
+
+            <p> If you only need to view the data, you can stick to the <strong>default Viewer role</strong>
+                that's automatically assigned after registration. </p>
+
+            <p> For more advanced tasks like adding or editing fighters, an
+                <strong>Admin can grant you FighterEditor role</strong>.
+                <br>
+                Users can request roles by visiting their <a href="/Account/Manage/Permissions">/Permissions</a> page.
+            </p>
+
+
+            <ul>
+                <li class="mb-2">
+                    <strong>Admin</strong>
+                    <ul>
+                        <li>Can manage user accounts and assign roles.</li>
+                        <li>Has full permission to add, edit, or delete fighters.</li>
+                        <li>Has the ability to review user permission requests and manage the application’s overall settings.</li>
+                    </ul>
+                </li>
+
+                <li class="mb-2">
+                    <strong>FighterEditor</strong>
+                    <ul>
+                        <li>Can add new fighters and edit existing ones.</li>
+                        <li>Can resolve outdated stats and keep the fighter data current.</li>
+                        <li>Ideal for those contributing new information or updates to the roster.</li>
+                    </ul>
+                </li>
+
+                <li class="mb-2">
+                    <strong>Viewer </strong> <span class="text-primary">(default)</span>
+                    <ul>
+                        <li>Can look at all fighter stats and search through the roster.</li>
+                        <li>Cannot modify or add any data.</li>
+                        <li>Perfect for anyone who just wants to browse and check stats.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+@rendermode InteractiveServer
+
+@if (Fighter != null)
+{
+    @if (Fighter.IsAlterEgo)
+    {
+        <!-- Display Base Fighter -->
+        <div class="card bg-grey border-0">
+            <div class="card-header">
+                <h4 class="fw-bold ms-2">Base Fighter</h4>
+            </div>
+
+
+            <ul class="list-group list-group-flush">
+                @if (Fighter.BaseFighter != null)
+                {
+
+                    <li class="list-group-item bg-primary text-white pointer"
+                        @onclick="() => GoToBaseFighter(Fighter.BaseFighter.FighterId)">
+                        <h5>
+                            <div class="pt-1">
+                                <small class="me-2"><i class="bi bi-arrow-left"></i></small>
+                                @Fighter.BaseFighter.GetFullName()
+                            </div>
+                        </h5>
+                    </li>
+                }
+                else
+                {
+                    <li class="list-group-item bg-primary text-white">
+                        <a class="h5 link">
+                            <span class="me-2"> No Base Fighter Found </span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+    else
+    {
+        <!-- Display Alter Egos -->
+        @if (Fighter.AlterEgos != null && Fighter.AlterEgos.Any())
+        {
+            <div class="card bg-primary border-0">
+                <div class="card-header bg-grey">
+                    <h4 class="fw-bold ms-2">Alter Egos</h4>
+                </div>
+
+
+                <ul class="list-group list-group-numbered list-group-flush ms-2">
+                    @foreach (var ego in Fighter.AlterEgos)
+                    {
+                        <li class="list-group-item bg-primary text-white pointer"
+                            @onclick="() => GoToAlterEgo(ego.FighterId)">
+                            <a class="h5 link" style="padding-top: 9px !important;">
+                                <span class="me-2"> @ego.EgoName </span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        else
+        {
+            <!-- No Alter Egos -->
+            <div class="card bg-grey border-0">
+                <div class="card-header">
+                    <h4 class="fw-bold ms-2">Alter Egos</h4>
+                </div>
+
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-primary text-white">
+                        <a class="h5 link">
+                            <span class="ms-2">None</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        }
+    }
+}

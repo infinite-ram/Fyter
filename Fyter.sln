@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.WebApp", "Fyter.WebApp\Fyter.WebApp.csproj", "{717E115D-B1ED-49A2-BB45-65507F93002D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{2909870B-F609-4839-A912-07F948349991}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.Plugins.InMemory", "Plugins\Fyter.Plugins.InMemory\Fyter.Plugins.InMemory.csproj", "{96634A1F-6C6F-4E9F-9DFC-16D612673FA8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.CoreBusiness", "Fyter.CoreBusiness\Fyter.CoreBusiness.csproj", "{CE0A74F8-5E98-4D0F-9540-8FC8A85644C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.UseCases", "Fyter.UseCases\Fyter.UseCases.csproj", "{77AE3294-1408-4172-B425-FFB8C73CD510}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.Plugins.Filters", "Plugins\Fyter.Plugins.Filters\Fyter.Plugins.Filters.csproj", "{CA006C42-1618-440F-909C-F047CBAC8ED4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyter.Plugins.EFCoreSqlite", "Plugins\Fyter.Plugins.EFCoreSqlite\Fyter.Plugins.EFCoreSqlite.csproj", "{F38D466D-E64D-48A8-8898-9D8217D65BA4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{717E115D-B1ED-49A2-BB45-65507F93002D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{717E115D-B1ED-49A2-BB45-65507F93002D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{717E115D-B1ED-49A2-BB45-65507F93002D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{717E115D-B1ED-49A2-BB45-65507F93002D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96634A1F-6C6F-4E9F-9DFC-16D612673FA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96634A1F-6C6F-4E9F-9DFC-16D612673FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96634A1F-6C6F-4E9F-9DFC-16D612673FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96634A1F-6C6F-4E9F-9DFC-16D612673FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE0A74F8-5E98-4D0F-9540-8FC8A85644C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE0A74F8-5E98-4D0F-9540-8FC8A85644C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE0A74F8-5E98-4D0F-9540-8FC8A85644C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE0A74F8-5E98-4D0F-9540-8FC8A85644C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77AE3294-1408-4172-B425-FFB8C73CD510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77AE3294-1408-4172-B425-FFB8C73CD510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77AE3294-1408-4172-B425-FFB8C73CD510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77AE3294-1408-4172-B425-FFB8C73CD510}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA006C42-1618-440F-909C-F047CBAC8ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA006C42-1618-440F-909C-F047CBAC8ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA006C42-1618-440F-909C-F047CBAC8ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA006C42-1618-440F-909C-F047CBAC8ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F38D466D-E64D-48A8-8898-9D8217D65BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F38D466D-E64D-48A8-8898-9D8217D65BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F38D466D-E64D-48A8-8898-9D8217D65BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F38D466D-E64D-48A8-8898-9D8217D65BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96634A1F-6C6F-4E9F-9DFC-16D612673FA8} = {2909870B-F609-4839-A912-07F948349991}
+		{CA006C42-1618-440F-909C-F047CBAC8ED4} = {2909870B-F609-4839-A912-07F948349991}
+		{F38D466D-E64D-48A8-8898-9D8217D65BA4} = {2909870B-F609-4839-A912-07F948349991}
+	EndGlobalSection
+EndGlobal

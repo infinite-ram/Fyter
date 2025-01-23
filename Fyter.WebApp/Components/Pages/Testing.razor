@@ -1,0 +1,5 @@
+@page "/testing"
+@rendermode InteractiveServer
+@attribute [Authorize(Roles = RoleConstants.Admin)]
+
+<button type="button" class="btn btn-warning mb-5" onclick="@Clear">Clear Logs</button>

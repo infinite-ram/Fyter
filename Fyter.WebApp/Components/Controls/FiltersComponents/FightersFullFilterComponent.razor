@@ -1,0 +1,100 @@
+<div class="btn-toolbar justify-content-center row g-3 pb-5">
+
+    @* Fighter Style Filters *@
+    <div class="col-12 col-md-auto">
+        <FighterStyleSelectComponent RefreshGrid="HandleRefreshGrid"/>
+    </div>
+
+    @* Fighter Division Filters *@
+    <div class="col-12 col-md-auto">
+        <FighterDivisionSelectComponent RefreshGrid="HandleRefreshGrid"/>
+    </div>
+
+    @* Fighter Perk Filters *@
+    <div class="col-12 col-md-auto">
+        <FighterPerkSelectComponent RefreshGrid="HandleRefreshGrid"/>
+    </div>
+
+
+    @* Stand Up Filters *@
+    <div class="btn-group col-12 col-md-auto mb-3">
+        <i class="bi bi-funnel-fill input-group-text" style="background-color: #d5d5d5;"></i>
+        <button
+            class="btn btn-primary px-3 w-100" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop"
+            style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+            aria-controls="offcanvasTop">Stand Up
+        </button>
+        @if (IsStandUpFilterApplied)
+        {
+            <i class="bi bi-x-circle btn btn-secondary"
+               style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+               @onclick="@ResetStandUpFilters"></i>
+        }
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasTopLabel">Stand Up Filters</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <FightersStandUpFilterComponent
+                    RefreshGrid="HandleRefreshGrid" StandUpFilter="FighterFilterRepository.StandUpFilter"/>
+            </div>
+        </div>
+    </div>
+
+    @* Grappling Filters *@
+    <div class="btn-group col-12 col-md-auto mb-3">
+        <i class="bi bi-funnel-fill input-group-text" style="background-color: #d5d5d5;"></i>
+        <button
+            class="btn btn-primary px-3 w-100" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvas-grappling"
+            style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+            aria-controls="offcanvasTop">Grappling
+        </button>
+        @if (IsGrapplingFilterApplied)
+        {
+            <i class="bi bi-x-circle btn btn-secondary"
+               style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+               @onclick="ResetGrapplingFilters"></i>
+        }
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-grappling" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasTopLabel">Grappling Filters</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <FightersGrapplingFilterComponent
+                    RefreshGrid="HandleRefreshGrid" GrapplingFilter="FighterFilterRepository.GrapplingUpFilter"/>
+            </div>
+        </div>
+    </div>
+
+    @* Health Filters *@
+    <div class="btn-group col-12 col-md-auto  mb-3">
+        <i class="bi bi-funnel-fill input-group-text" style="background-color: #d5d5d5;"></i>
+        <button
+            class="btn btn-primary px-3" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvas-health"
+            style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+            aria-controls="offcanvasTop">Health
+        </button>
+        @if (IsHealthFilterApplied)
+        {
+            <i class="bi bi-x-circle btn btn-secondary w-100"
+               style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;"
+               @onclick="ResetHealthFilters"></i>
+        }
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-health" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasTopLabel">Fighter Health Filters</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <FightersHealthFilterComponent
+                    RefreshGrid="HandleRefreshGrid" HealthFilter="FighterFilterRepository.HealthFilter"/>
+            </div>
+        </div>
+    </div>
+
+</div>

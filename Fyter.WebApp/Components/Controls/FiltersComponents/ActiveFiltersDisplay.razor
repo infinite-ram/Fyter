@@ -1,0 +1,17 @@
+<div class="me-3 mb-3" >
+    @if (FighterFilterRepository.ActiveFilterDisplays.Any())
+    {
+        <div class="d-flex flex-wrap">
+            @foreach (var filterPair in FighterFilterRepository.ActiveFilterDisplays)
+            {
+                <button class="btn btn-sm btn-outline-danger rounded-3 me-2 mb-2" @onclick="() => RemoveFilter(filterPair.Key)">
+                    @filterPair.Value
+                    <i class="fa-solid fa-circle-xmark ms-2"></i>
+                </button>
+            }
+        </div>
+    }
+</div>
+
+
+

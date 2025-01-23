@@ -1,0 +1,77 @@
+@page "/"
+
+@rendermode InteractiveServer
+
+<div class="my-5">
+    <SearchFightersListComponent
+        Title="Fyter 5"
+        SubTitle="Fighters"
+        TotalResults="totalResults"
+        OnSearchInput="HandleOnSearchInput" />
+</div>
+
+<div class="mb-3">
+    <FightersFullFilterComponent RefreshGrid="RefreshGrid" />
+</div>
+
+<ActiveFiltersDisplay OnFilterRemoved="RefreshGrid"/>
+
+<div class="mx-4 justify-content-center d-flex">
+    <QuickGrid ItemsProvider="@itemsProvider" Pagination="@pagination" @ref="grid" Theme="responsive">
+        <TemplateColumn Title="Fighter Name" Class="fighter-name">
+            <div class="mobile-view">
+                <a onclick="@(() => ViewFighter(context))"
+                   class="btn btn-title d-flex justify-content-between align-items-center mb-1 rounded-3 w-100">
+                    <span class="ms-3 h5">
+                        @context.FirstName &nbsp; @context.LastName
+                    </span>
+
+                    <i class="fa-solid fa-circle-right me-2"></i>
+                </a>
+            </div>
+
+            <div class="big-view">
+                <td class="col-justify-right fighter-name">@context.FirstName &nbsp; @context.LastName</td>
+            </div>
+        </TemplateColumn>
+        @* <PropertyColumn *@
+        @*     Title="Fighter Name" *@
+        @*     Property="@(f => f.GetFullName())" *@
+        @*     Sortable="true" *@
+        @*     Class="fighter-name" /> *@
+        <PropertyColumn
+            Title="Fighter Style"
+            Property="@(f => f.FighterStyle.GetDisplayName())"
+            Sortable="true"
+            Align="Align.Right"
+            Class="fighter-style" />
+        <PropertyColumn
+            Title="Division"
+            Property="@(f => f.Division.GetDisplayName())"
+            Sortable="true"
+            Align="Align.Right"
+            Class="division" />
+        <PropertyColumn
+            Title="Fighter Stars"
+            Property="@(f => f.FighterStars)"
+            Sortable="true"
+            Align="Align.Right"
+            Class="fighter-stars" />
+        <TemplateColumn Title="Fighter Details" Class="fighter-detail-btn">
+
+                <a onclick="@(() => ViewFighter(context))"
+                   class="btn btn-title d-flex justify-content-between align-items-center rounded-3">
+                        View
+
+                    <i class="fa-solid fa-circle-right me-2"></i>
+                </a>
+            @* <a onclick="@(() => ViewFighter(context))" class="btn-title d-flex justify-content-between align-items-center"> *@
+            @*     View *@
+            @**@
+            @*     <i class="fa-solid fa-circle-right me-2"></i> *@
+            @* </a> *@
+        </TemplateColumn>
+    </QuickGrid>
+</div>
+
+<Paginator State="@pagination" />

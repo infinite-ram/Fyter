@@ -1,0 +1,64 @@
+@page "/Account/ManageUser/{userid}"
+
+@attribute [Authorize(Roles = "Admin" )]
+@rendermode InteractiveServer
+
+<h3>Manage User</h3>
+<br />
+
+@if (viewModel != null)
+{
+    <EditForm Model="viewModel" OnValidSubmit="SaveUser" FormName="SaveUserRole">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="email">Username</label>
+            <input
+                id="username"
+                type="text"
+                class="form-control"
+                readonly
+                value="@viewModel.UserName" />
+        </div>
+        <br/>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input
+                id="email"
+                type="text"
+                class="form-control"
+                readonly
+                value="@viewModel.Email" />
+        </div>
+        <br/>
+
+        <div class="form-group">
+            <label>Roles</label>
+            <div>
+                @foreach(var role in viewModel.Roles)
+                {
+                    <div class="form-check">
+                        <InputCheckbox @bind-Value="role.IsSelected" class="form-check-input" id="@role.RoleName" />
+                        <label class="form-check-label" for="@role.RoleName">
+                            @role.RoleName
+                            @if (role.IsRequested && !role.IsSelected)
+                            {
+                                <span class="text-warning">(Requested)</span>
+                            }
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+        <br/>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="/account/manageusers" class="btn btn-link">Cancel</a>
+    </EditForm>
+}
+else
+{
+    <p>Loading user data...</p>
+}

@@ -1,0 +1,67 @@
+<h3 class="mb-4">Fighter Info</h3>
+<div class="form-group mb-3">
+    <label for="nickname">Nickname</label>
+    <InputText id="nickname" @bind-Value="_fighterDto.FighterInfo.NickName" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.NickName"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="age">Age</label>
+    <InputNumber id="age" @bind-Value="_fighterDto.FighterInfo.Age" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.Age"/>
+</div>
+
+
+<div class="form-group mb-3">
+    <label for="height">Height</label>
+
+    <div class="row">
+        <div class="col">
+            <label for="feet">Feet</label>
+            <InputNumber id="feet" @bind-Value="_fighterDto.FighterInfo.Height.Feet"
+                         class="form-control" Placeholder="5'5&quot;" autocomplete="on"/>
+            <ValidationMessage For="() => _fighterDto.FighterInfo.Height.Feet"/>
+        </div>
+        <div class="col">
+            <label for="inches">Inches</label>
+            <InputNumber id="inches" @bind-Value="_fighterDto.FighterInfo.Height.Inches"
+                         class="form-control" Placeholder="5'5&quot;" autocomplete="on"/>
+            <ValidationMessage For="() => _fighterDto.FighterInfo.Height.Inches"/>
+        </div>
+    </div>
+</div>
+
+<div class="form-group mb-3">
+    <label for="weight">Weight</label>
+    <InputNumber id="weight" @bind-Value="_fighterDto.FighterInfo.Weight" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.Weight"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="reach">Reach</label>
+    <InputNumber id="reach" @bind-Value="_fighterDto.FighterInfo.Reach" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.Reach"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="stance">Stance</label>
+    <InputSelect id="stance" @bind-Value="_fighterDto.FighterInfo.Stance" class="form-control" autocomplete="on">
+        @foreach (StanceEnum stance in Enum.GetValues(typeof(StanceEnum)))
+        {
+            <option value="@stance">@stance</option>
+        }
+    </InputSelect>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.Stance"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="hometown">Home Town</label>
+    <InputText id="hometown" @bind-Value="_fighterDto.FighterInfo.HomeTown" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.HomeTown"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fightingoutof">Fighting Out Of</label>
+    <InputText id="fightingoutof" @bind-Value="_fighterDto.FighterInfo.FightingOutOf" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterInfo.FightingOutOf"/>
+</div>

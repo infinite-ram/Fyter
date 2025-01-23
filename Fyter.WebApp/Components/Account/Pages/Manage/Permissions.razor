@@ -1,0 +1,76 @@
+@page "/Account/Manage/Permissions"
+@rendermode InteractiveServer
+
+<h3>Your Permissions</h3>
+
+<p>You have the following roles:</p>
+@if (userRoles.Count > 0)
+{
+    <ul>
+        @foreach (var role in userRoles)
+        {
+            <li>@role</li>
+        }
+    </ul>
+}
+else
+{
+    <p>You have no assigned roles.</p>
+}
+
+<br>
+@if (user.RequestedRoles != null && user.RequestedRoles.Count > 0)
+{
+    var count = user.RequestedRoles.Count;
+
+    <p>Your role requests are pending approval:</p>
+    <ul>
+        @foreach (var role in user.RequestedRoles)
+        {
+            <li class="d-flex align-items-center justify-content-between mb-2">
+                <span>@role.RoleName</span>
+                <button
+                    type="button" class="btn btn-sm btn-warning"
+                    @onclick="async () => { await RevokeRole(role.RoleName);}">
+                    Revoke Request
+                </button>
+            </li>
+        }
+    </ul>
+}
+
+<hr style="width:50%;">
+
+
+<h3 class="mb-4">Request Permissions</h3>
+
+<EditForm Model="Input" OnValidSubmit="RequestPermission" FormName="requestpermission">
+    <DataAnnotationsValidator/>
+    <ValidationSummary class="text-danger"/>
+
+    @foreach(var role in Input.RoleSelections)
+    {
+        var isAssigned = userRoles.Contains(role.RoleName);
+        var isPending = user.RequestedRoles.Any(rr => rr.RoleName == role.RoleName);
+        var IsDeveloper = role.RoleName == "Developer";
+        var isDisabled = isAssigned || isPending || IsDeveloper;
+        <div class="form-check">
+            <InputCheckbox
+                @bind-Value="@role.IsSelected"
+                disabled="@isDisabled"
+                class="form-check-input" />
+            <label class="form-check-label">
+                @role.RoleName
+                @if (isAssigned)
+                {
+                    <span style="color:darkgreen;"> (Already assigned ✅)</span>
+                }
+                else if (isPending)
+                {
+                    <span class="text-warning"> (Pending approval)</span>
+                }
+            </label>
+        </div>
+        }
+    <button type="submit" class="mt-5 btn btn-primary">Send Request</button>
+</EditForm>

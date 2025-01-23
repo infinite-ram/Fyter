@@ -1,0 +1,13 @@
+<h3 class="mb-4">Stand Up</h3>
+@foreach (var prop in typeof(StandUpDto).GetProperties())
+{
+    var stat = (StatDto)prop.GetValue(_fighterDto.StandUp);
+    <div class="form-group mb-3">
+        <label>@prop.Name</label>
+        <InputNumber @bind-Value="stat.Value" class="form-control" autocomplete="on"/>
+        <ValidationMessage For="@(() => stat.Value)"/>
+        <label>@prop.Name Stars</label>
+        <InputNumber @bind-Value="stat.Stars" class="form-control" autocomplete="on"/>
+        <ValidationMessage For="@(() => stat.Stars)"/>
+    </div>
+}

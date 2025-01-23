@@ -1,0 +1,55 @@
+@page "/Account/ManageFighterRequests"
+@rendermode InteractiveServer
+
+@attribute [Authorize(Roles = "Admin" )]
+
+<h3>Manage Role Requests</h3>
+<br />
+
+@if (usersWithRequests != null && usersWithRequests.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Requested Roles</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in usersWithRequests)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>@user.UserName</td>
+                    <td>
+                        <ul class="list-unstyled">
+                            @foreach (var requestedRole in user.RequestedRoles)
+                            {
+                                <div style="width: 40%;">
+                                    <li class="d-flex align-items-center justify-content-between mb-2">
+                                        <span class="me-3">@requestedRole.RoleName</span>
+                                        <div>
+                                            <button class="btn btn-success btn-sm me-2"
+                                                    @onclick="() => ApproveRequest(user.Id, requestedRole.RoleName)">
+                                                Approve
+                                            </button>
+                                            <button class="btn btn-danger btn-sm"
+                                                    @onclick="() => DenyRequest(user.Id, requestedRole.RoleName)">
+                                                Deny
+                                            </button>
+                                        </div>
+                                    </li>
+                                </div>
+                            }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No pending requests.</p>
+}

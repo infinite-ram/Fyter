@@ -1,0 +1,44 @@
+<div class="card bg-grey border-0">
+    <div class="card-header ms-2">
+        <h3 class="fw-bold">Overall</h3>
+    </div>
+    <div class="card-body ms-2">
+        <div class="mb-3">
+            <FighterStarsAttributeComponent Fighter="Fighter" OutdatedProp="FighterStars" Col="6"
+                Label="Fighter Stars: " Stars="@Fighter.FighterStars" OutOf="5" />
+        </div>
+        <div class="mb-3">
+            <FighterStarsAttributeComponent Fighter="Fighter" OutdatedProp="FighterStandUpStars"
+                Col="6" Label="Stand Up Stars: " Stars="@Fighter.FighterStandUpStars" OutOf="5" />
+        </div>
+        <div class="mb-3">
+            <FighterStarsAttributeComponent Fighter="Fighter" OutdatedProp="FighterGrapplingStars"
+                Col="6" Label="Grappling Stars: " Stars="@Fighter.FighterGrapplingStars" OutOf="5" />
+        </div>
+        <div class="mb-3">
+            <FighterStarsAttributeComponent Fighter="Fighter" OutdatedProp="FighterHealthStars"
+                Col="6" Label="Health Stars: " Stars="@Fighter.FighterHealthStars" OutOf="5" />
+        </div>
+
+        <div>
+            <FighterAttributeComponent Fighter="Fighter" OutdatedProp="FighterStyle"
+                Attribute="@Fighter.FighterStyle.GetDisplayName()" Label="Fighter Style: " Col="5" />
+        </div>
+
+        <div>
+            <FighterAttributeComponent
+                Col="5" Label="Last Updated: " Attribute="@Fighter.LastUpdated.ToString()" />
+        </div>
+
+        @if (!string.IsNullOrEmpty(LastUpdatedByUserName))
+        {
+            <FighterAttributeComponent
+                Col="5" Label="Last Updated By: " Attribute="@LastUpdatedByUserName" />
+        }
+        else
+        {
+            <FighterAttributeComponent
+                Col="5" Label="Added By: " Attribute="@AddedByUserName" />
+        }
+    </div>
+</div>

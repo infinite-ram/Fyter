@@ -1,0 +1,21 @@
+@using Fyter.CoreBusiness.FighterModel
+
+<h2 class="fw-bold mb-4">Stand Up</h2>
+
+@foreach (var statProp in typeof(StandUp).GetProperties())
+{
+    var statName = statProp.Name;
+    var labelText = $"{statName}:";
+    var ratingProp = $"StandUp.{statName}.Value";
+    var starsRatingProp = $"StandUp.{statName}.Stars";
+
+    <div class="mb-3">
+        <FighterStarsAttributeComponent
+            Fighter="@Fighter"
+            Label="@labelText"
+            Stars="@((statProp.GetValue(Fighter.StandUp) as Stat).Stars)"
+            Value="@((statProp.GetValue(Fighter.StandUp) as Stat).Value)"
+            StarsRatingOutdatedProp="@starsRatingProp"
+            RatingOutdatedProp="@ratingProp" />
+    </div>
+}

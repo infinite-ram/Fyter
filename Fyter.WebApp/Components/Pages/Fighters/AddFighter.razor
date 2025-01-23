@@ -1,0 +1,31 @@
+@page "/addfighter"
+@page "/addfighter/{FighterRequestId:int}"
+
+@attribute [Authorize(Roles = "FighterEditor, Admin")]
+@rendermode InteractiveServer
+
+<h2 class="mb-5">Add Fighter</h2>
+
+<EditForm EditContext="@editContext" class="w-50 mb-5" OnInvalidSubmit="HandleInvalidSubmit"
+    OnValidSubmit="HandleValidSubmit" FormName="AddFighterForm">
+
+    <ObjectGraphDataAnnotationsValidator />
+
+    <CascadingValue Value="editContext">
+        <CascadingValue Value="messageStore">
+            <IsFighterAlterEgoComponent />
+            <AddFighterGeneralInfoFormComponent />
+            <AddFighterStandUpFormComponent />
+            <AddFighterGrapplingFormComponent />
+            <AddFighterHealthFormComponent />
+            <AddFighterPersonalInfoFormComponent />
+            <AddFighterPerksFormComponent />
+            <AddFighterTopMovesFormComponent />
+        </CascadingValue>
+    </CascadingValue>
+
+    <br />
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="/" class="btn btn-secondary">Cancel</a>
+    <button type="button" onclick="@ClearForm" class="btn btn-secondary">Clear Form</button>
+</EditForm>

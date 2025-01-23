@@ -1,0 +1,15 @@
+<div class="card bg-grey border-0">
+    <div class="card-header ms-2 d-flex align-items-center justify-content-between">
+        <h4 class="fw-bold">Perks</h4>
+        <OutdatedStatusComponent Fighter="Fighter" PropertyPath="Perks" />
+    </div>
+
+    <ul class="list-group list-group-flush list-group-numbered ms-2">
+    @foreach(var perk in Fighter.Perks)
+    {
+        <li class="list-group-item bg-grey">
+            <span class="fw-bold">@perk.GetDisplayName()</span>
+        </li>
+    }
+    </ul>
+</div>

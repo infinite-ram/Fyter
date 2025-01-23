@@ -1,0 +1,68 @@
+<h3 class="mb-4">General Info</h3>
+
+<div class="form-group mb-3">
+    <label for="firstname">Fighter First Name</label>
+    <InputText id="firstname" @bind-Value="_fighterDto.FirstName" class="form-control" autocomplete="firstname"/>
+    <ValidationMessage For="() => _fighterDto.FirstName"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="lastName">Fighter Last Name</label>
+    <InputText id="lastName" @bind-Value="_fighterDto.LastName" class="form-control" autocomplete="lastName"/>
+    <ValidationMessage For="() => _fighterDto.LastName"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fighterstars">Fighter Stars</label>
+    <InputNumber min="0" max="5" id="fighterstars" @bind-Value="_fighterDto.FighterStars"
+                 class="form-control" autocomplete="fighterstars"/>
+    <ValidationMessage For="() => _fighterDto.FighterStars"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fighterstandupstars">Fighter Stand Up Stars</label>
+    <InputNumber id="fighterstandupstars" @bind-Value="_fighterDto.FighterStandUpStars" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterStandUpStars"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fightergrapplingstars">Fighter Grappling Stars</label>
+    <InputNumber id="fightergrapplingstars" @bind-Value="_fighterDto.FighterGrapplingStars" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterGrapplingStars"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fighterhealthstars">Fighter Health Stars</label>
+    <InputNumber id="fighterhealthstars" @bind-Value="_fighterDto.FighterHealthStars" class="form-control" autocomplete="on"/>
+    <ValidationMessage For="() => _fighterDto.FighterHealthStars"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="EgoName">Ego Name</label>
+    <InputText id="EgoName" @bind-Value="_fighterDto.EgoName" class="form-control" autocomplete="EgoName"/>
+    <ValidationMessage For="() => _fighterDto.EgoName"/>
+</div>
+
+<div class="form-group mb-3">
+    <label for="fighterstyle">Fighter Style</label>
+    <InputSelect id="fighterstyle" @bind-Value="_fighterDto.FighterStyle" class="form-control" autocomplete="on">
+        @foreach (FighterStyleEnum style in Enum.GetValues(typeof(FighterStyleEnum)))
+        {
+            <option value="@style">@style</option>
+        }
+    </InputSelect>
+    <ValidationMessage For="() => _fighterDto.FighterStyle"/>
+</div>
+
+
+<div class="form-group mb-3">
+    <label for="division">Select Division</label>
+    <InputSelect id="division" @bind-Value="_fighterDto.Division" class="form-control" autocomplete="division">
+        <option value="">Select Division</option>
+        @foreach (var division in Enum.GetValues<DivisionEnum>())
+        {
+            <option value="@division">@division.GetDisplayName()</option>
+        }
+    </InputSelect>
+    <ValidationMessage For="() => _fighterDto.Division"/>
+</div>

@@ -1,0 +1,47 @@
+@page "/editfighterrequest/{FighterRequestId:int}"
+
+@rendermode InteractiveServer
+@attribute [Authorize]
+
+@if(FighterRequest != null)
+{
+    <h5 class="mb-4">Edit <strong>@FighterRequest.FullName</strong></h5>
+    <EditForm
+        Model="FighterRequest" class="w-50 mb-5" OnInvalidSubmit="HandleInvalidSubmit"
+        OnValidSubmit="Save" FormName="FighterRequestForm">
+
+        <DataAnnotationsValidator />
+        <ValidationSummary class="text-danger" role="alert" />
+
+        @if (!string.IsNullOrEmpty(ValidationMessage))
+        {
+            <div class="alert alert-danger" role="alert">
+                @ValidationMessage
+            </div>
+        }
+
+        <div class="form-floating mb-3">
+            <InputText @bind-Value="FighterRequest.FirstName" class="form-control"
+                        aria-required="true" placeholder="First Name" />
+            <label for="firstName" class="form-label">First Name</label>
+            <ValidationMessage For="() => FighterRequest.FirstName" class="text-danger" />
+        </div>
+
+        <div class="form-floating mb-3">
+            <InputText @bind-Value="FighterRequest.LastName" class="form-control"
+                        aria-required="true" placeholder="Last Name" />
+            <label for="lastName" class="form-label">Last Name</label>
+            <ValidationMessage For="() => FighterRequest.LastName" class="text-danger" />
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+            </div>
+            <div class="col">
+                <a href="/fighterrequests" class="w-100 btn btn-lg btn-secondary">Cancel</a>
+            </div>
+        </div>
+    </EditForm>
+
+}

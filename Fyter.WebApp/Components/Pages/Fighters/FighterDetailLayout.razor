@@ -1,0 +1,33 @@
+@page "/layout/{Id:int}"
+
+<div class="container">
+<FighterNameDetailComponent Fighter="@Fighter" />
+
+    <div class="row mt-3 gap-5">
+        @* Left column *@
+        <div class="col-12 col-md-6 mb-3">
+            <div class="mb-4">
+                <FighterPersonalInfoComponent Fighter="@Fighter" />
+            </div>
+
+            <div class="mb-4">
+                <FighterStandUpDetailComponent Fighter="@Fighter" />
+            </div>
+        </div>
+
+        @* Right column *@
+        <div class="col-12 col-md-4 mb-3">
+            <div class="mb-4">
+                <FighterGeneralInfoComponent Fighter="@Fighter" />
+            </div>
+
+            <div class="mb-4">
+                <FighterPerksListDetailComponent Fighter="@Fighter" />
+            </div>
+
+            <div class="mb-4">
+                <FighterAlterEgoListDetailComponent Fighter="@Fighter" />
+            </div>
+        </div>
+    </div>
+</div>

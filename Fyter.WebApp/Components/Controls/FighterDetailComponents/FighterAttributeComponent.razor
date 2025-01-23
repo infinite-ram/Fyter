@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="@ComputeCol()">
+        <p class="fw-bold text-start">
+            @Label
+
+        </p>
+    </div>
+    <div class="col">
+        @Attribute
+        @if (Fighter != null && !string.IsNullOrWhiteSpace(OutdatedProp))
+        {
+            <OutdatedStatusComponent Fighter="Fighter" PropertyPath="@OutdatedProp" />
+        }
+    </div>
+</div>

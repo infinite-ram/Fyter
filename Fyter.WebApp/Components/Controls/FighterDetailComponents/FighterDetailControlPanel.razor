@@ -1,0 +1,16 @@
+        <div class="card border-0 bg-grey">
+            <div class="card-header bg-grey ms-2 d-flex align-items-center justify-content-between">
+                <h4 class="fw-bold">Control Panel</h4>
+            </div>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-warning">
+                    <FighterOutdatedStatsModalComponent Fighter="@Fighter" OnRefresh="Refresh"/>
+                </li>
+                <li class="list-group-item bg-warning">
+                    <a href="/editfighter/@Fighter.FighterId" class="btn fw-bold">
+                        Edit Fighter
+                    </a>
+                </li>
+            </ul>
+        </div>

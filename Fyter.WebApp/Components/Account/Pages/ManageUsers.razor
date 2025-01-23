@@ -1,0 +1,57 @@
+@page "/Account/ManageUsers"
+
+@attribute [Authorize(Roles = "Admin")]
+@rendermode InteractiveServer
+
+<h3>Manage Users</h3>
+<br />
+
+@if (users != null && users.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var user in users)
+            {
+                <tr>
+                    <td>@user.Email</td>
+                    <td>
+                        <a href="/account/manageuser/@user.Id" class="btn btn-link">Manage</a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="() => ConfirmDeleteUser(user.Id, user.Email)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@if (showDeleteConfirmation)
+{
+    <div class="modal show d-block" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Deletion</h5>
+                    <button type="button" class="btn-close" @onclick="CancelDelete" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete the user <strong>@userToDeleteEmail</strong>?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" @onclick="DeleteUser">Delete</button>
+                    <button type="button" class="btn btn-secondary" @onclick="CancelDelete">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

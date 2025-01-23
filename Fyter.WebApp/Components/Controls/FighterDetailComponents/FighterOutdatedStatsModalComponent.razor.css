@@ -1,0 +1,40 @@
+.form-check-input {
+  border-color: black;
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999999;
+}
+
+.modal-dialog {
+  height: 90vh;
+  margin-top: 80px;
+}
+
+.fa-flag::before {
+  font-size: 17px;
+}
+
+.btn-black {
+  background-color: #16161f;
+  color: white;
+}
+
+.btn-black:hover {
+  background-color: #404046;
+  color: white;
+}
+
+.btn-black:focus,
+.btn-black:active,
+.btn-black:focus:active {
+  background-color: #16161f;
+  color: white;
+  box-shadow: none;
+  outline: none;
+}

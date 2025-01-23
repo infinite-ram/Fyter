@@ -1,0 +1,98 @@
+<div class="ms-2 mb-4">
+    <h2 class="fw-bold">Fighter Bio</h2>
+</div>
+
+<div class="ms-2">
+    <div class="row">
+        <!-- Nick Name -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.NickName"
+            Label="Nick Name: "
+            Attribute="@Fighter.FighterInfo.NickName"
+        />
+
+        <!-- Age -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.Age"
+            Label="Age: "
+            Attribute="@Fighter.FighterInfo.Age.ToString()"
+        />
+
+        <!-- Height -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="@outdatedHeightPropPath"
+            Label="Height: "
+            Attribute="@height"
+        />
+
+        <!-- Weight -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.Weight"
+            Label="Weight: "
+            Attribute="@Fighter.FighterInfo.Weight.ToString()"
+        />
+
+        <!-- Ego Name -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="EgoName"
+            Label="Ego Name: "
+            Attribute="@Fighter.EgoName"
+        />
+
+        <!-- Division -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="Division"
+            Label="Division: "
+            Attribute="@Fighter.Division.GetDisplayName()"
+        />
+
+        <!-- Reach -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.Reach"
+            Label="Reach:"
+            Col="5"
+            Attribute="@Fighter.FighterInfo.Reach.ToString()"
+        />
+
+        <!-- Stance -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.Stance"
+            Label="Stance:"
+            Col="5"
+            Attribute="@Fighter.FighterInfo.Stance.GetDisplayName()"
+        />
+
+        <!-- Home Town -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.HomeTown"
+            Label="Home Town:"
+            Col="5"
+            Attribute="@Fighter.FighterInfo.HomeTown"
+        />
+
+        <!-- Fighting Out Of -->
+        <FighterAttributeComponent
+            Fighter="Fighter"
+            OutdatedProp="FighterInfo.FightingOutOf"
+            Label="Fighting Out Of:"
+            Col="5"
+            Attribute="@Fighter.FighterInfo.FightingOutOf"
+        />
+
+        <!-- Is Alter Ego? -->
+        <FighterAttributeComponent
+            Label="Is Alter Ego?"
+            Col="5"
+            Attribute="@Fighter.IsAlterEgo.ToString()"
+        />
+    </div>
+</div>

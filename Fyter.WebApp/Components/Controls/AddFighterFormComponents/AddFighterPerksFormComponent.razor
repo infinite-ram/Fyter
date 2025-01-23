@@ -1,0 +1,35 @@
+<h3 class="mb-4">Perks</h3>
+<div class="row">
+    <div class="col">
+        <div class="form-group mb-3">
+            <label for="perksSearch">Search and Select Perks</label>
+            <input id="perksSearch" type="text" class="form-control mb-2" placeholder="Search Perks..."
+                   @bind="searchTerm" @bind:event="oninput"/>
+            <div class="border rounded" style="max-height: 300px; overflow-y: auto;">
+                @foreach (var perk in FilteredPerks)
+                {
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input"
+                               @onchange="() => TogglePerkSelection(perk)"
+                               checked="@_fighterDto.Perks.Contains(perk)"/>
+                        <label class="form-check-label">@perk.GetDisplayName()</label>
+                    </div>
+                }
+            </div>
+            <ValidationMessage For="() => _fighterDto.Perks"/>
+        </div>
+
+    </div>
+    <div class="col">
+        @if (_fighterDto.Perks != null && _fighterDto.Perks.Count > 0)
+        {
+            <p class="fw-bold mt-4">Selected Perks</p>
+            <div class="row">
+                @foreach (var perk in _fighterDto.Perks)
+                {
+                    <p class="">@perk.GetDisplayName() </p>
+                }
+            </div>
+        }
+    </div>
+</div>

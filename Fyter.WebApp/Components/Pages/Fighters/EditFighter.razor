@@ -1,0 +1,460 @@
+@page "/editfighter/{Id:int}"
+@using Fyter.CoreBusiness.FighterModel
+
+@rendermode InteractiveServer
+
+@if (isAuthorized)
+{
+    <h2 class="mb-5">Edit Fighter @fighter.GetFullName()</h2>
+
+    <EditForm class="w-50 mb-5" Model="fighter" OnValidSubmit="Update" FormName="EditFighterForm">
+    <DataAnnotationsValidator/>
+
+    <!-- General Info Section -->
+    <h3 class="mb-4">General Info</h3>
+    <div class="form-group mb-3">
+        <label for="firstname">Fighter First Name</label>
+        <InputText id="firstname" @bind-Value="fighter.FirstName" class="form-control" autocomplete="name"/>
+        <ValidationMessage For="() => fighter.FirstName"/>
+        @if (IsPropertyOutdated(nameof(fighter.FirstName)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="lastname">Fighter Last Name</label>
+        <InputText id="lastname" @bind-Value="fighter.LastName" class="form-control" autocomplete="name"/>
+        <ValidationMessage For="() => fighter.LastName"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.LastName)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fighterstars">Fighter Stars</label>
+        <InputNumber min="0" max="5" id="fighterstars" @bind-Value="fighter.FighterStars" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterStars"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.FighterStars)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fighterstandupstars">Fighter Stand Up Stars</label>
+        <InputNumber id="fighterstandupstars" @bind-Value="fighter.FighterStandUpStars" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterStandUpStars"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.FighterStandUpStars)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fightergrapplingstars">Fighter Grappling Stars</label>
+        <InputNumber id="fightergrapplingstars" @bind-Value="fighter.FighterGrapplingStars" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterGrapplingStars"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.FighterGrapplingStars)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fighterhealthstars">Fighter Health Stars</label>
+        <InputNumber id="fighterhealthstars" @bind-Value="fighter.FighterHealthStars" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterHealthStars"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.FighterHealthStars)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="EgoName">Ego Name</label>
+        <InputText id="EgoName" @bind-Value="fighter.EgoName" class="form-control"/>
+        <ValidationMessage For="() => fighter.EgoName"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.EgoName)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fighterstyle">Fighter Style</label>
+        <InputSelect id="fighterstyle" @bind-Value="fighter.FighterStyle" class="form-control">
+            @foreach (FighterStyleEnum style in Enum.GetValues(typeof(FighterStyleEnum)))
+            {
+                <option value="@style">@style</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="() => fighter.FighterStyle"/>
+
+        @if (IsPropertyOutdated(nameof(fighter.FighterStyle)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <!-- Divisions Section -->
+    <div class="form-group mb-3">
+        <label for="division">Select Division</label>
+        <InputSelect id="division" @bind-Value="fighter.Division" class="form-control">
+            <option value="">Select Division</option> <!-- Placeholder option -->
+            @foreach (var division in Enum.GetValues<DivisionEnum>())
+            {
+                <option value="@division">@division.GetDisplayName()</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="() => fighter.Division"/>
+        @if (IsPropertyOutdated(nameof(fighter.Division)))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+
+    <!-- Stand Up Section -->
+    <h3 class="mb-4">Stand Up</h3>
+    @foreach (var prop in typeof(StandUp).GetProperties())
+    {
+        var stat = (Stat)prop.GetValue(fighter.StandUp);
+        var propPath = $"StandUp.{prop.Name}";
+
+        <div class="form-group mb-3">
+            <label>@prop.Name</label>
+            <InputNumber @bind-Value="stat.Value" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Value)"/>
+
+            @if (IsPropertyOutdated($"{propPath}.Value"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+
+            <br>
+            <label>@prop.Name Stars</label>
+            <InputNumber @bind-Value="stat.Stars" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Stars)"/>
+            @if (IsPropertyOutdated($"{propPath}.Stars"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+        </div>
+    }
+
+    <!-- Grappling Section -->
+    <h3 class="mb-4">Grappling</h3>
+    @foreach (var prop in typeof(Grappling).GetProperties())
+    {
+        var stat = (Stat)prop.GetValue(fighter.Grappling);
+        var propPath = $"Grappling.{prop.Name}";
+
+        <div class="form-group mb-3">
+            <label>@prop.Name</label>
+            <InputNumber @bind-Value="stat.Value" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Value)"/>
+            @if (IsPropertyOutdated($"{propPath}.Value"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+
+            <label>@prop.Name Stars</label>
+            <InputNumber @bind-Value="stat.Stars" min="0" max="5" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Stars)"/>
+            @if (IsPropertyOutdated($"{propPath}.Stars"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+        </div>
+    }
+
+    <!-- Health Section -->
+    <h3 class="mb-4">Health</h3>
+    @foreach (var prop in typeof(Health).GetProperties())
+    {
+        var stat = (Stat)prop.GetValue(fighter.Health);
+        var propPath = $"Health.{prop.Name}";
+        <div class="form-group mb-3">
+            <label>@prop.Name</label>
+            <InputNumber @bind-Value="stat.Value" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Value)"/>
+            @if (IsPropertyOutdated($"{propPath}.Value"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+
+
+            <label>@prop.Name Stars</label>
+            <InputNumber @bind-Value="stat.Stars" min="0" max="5" class="form-control"/>
+            <ValidationMessage For="@(() => stat.Stars)"/>
+            @if (IsPropertyOutdated($"{propPath}.Stars"))
+            {
+                <span class="text-warning">⚠️ Outdated</span>
+            }
+        </div>
+    }
+
+    <!-- Fighter Info Section -->
+    <h3 class="mb-4">Fighter Info</h3>
+    <div class="form-group mb-3">
+        <label for="nickname">Nickname</label>
+        <InputText id="nickname" @bind-Value="fighter.FighterInfo.NickName" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.NickName"/>
+        @if (IsPropertyOutdated("FighterInfo.NickName"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="age">Age</label>
+        <InputNumber id="age" @bind-Value="fighter.FighterInfo.Age" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.Age"/>
+        @if (IsPropertyOutdated("FighterInfo.Age"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="height">Height</label>
+
+        <div class="row">
+            <div class="col">
+                <label for="feet">Feet</label>
+                <InputNumber id="feet" @bind-Value="fighter.FighterInfo.Height.Feet"
+                             class="form-control" Placeholder="5'5&quot;" autocomplete="on"/>
+                <ValidationMessage For="() => fighter.FighterInfo.Height.Feet"/>
+                @if (IsPropertyOutdated("FighterInfo.Height.Feet"))
+                {
+                    <span class="text-warning">⚠️ Outdated</span>
+                }
+            </div>
+            <div class="col">
+                <label for="inches">Inches</label>
+                <InputNumber id="inches" @bind-Value="fighter.FighterInfo.Height.Inches"
+                             class="form-control" Placeholder="5'5&quot;" autocomplete="on"/>
+                <ValidationMessage For="() => fighter.FighterInfo.Height.Inches"/>
+                @if (IsPropertyOutdated("FighterInfo.Height.Inches"))
+                {
+                    <span class="text-warning">⚠️ Outdated</span>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="weight">Weight</label>
+        <InputNumber id="weight" @bind-Value="fighter.FighterInfo.Weight" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.Weight"/>
+        @if (IsPropertyOutdated("FighterInfo.Weight"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="reach">Reach</label>
+        <InputNumber id="reach" @bind-Value="fighter.FighterInfo.Reach" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.Reach"/>
+        @if (IsPropertyOutdated("FighterInfo.Weight"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="stance">Stance</label>
+        <InputSelect id="stance" @bind-Value="fighter.FighterInfo.Stance" class="form-control">
+            @foreach (StanceEnum stance in Enum.GetValues(typeof(StanceEnum)))
+            {
+                <option value="@stance">@stance</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="() => fighter.FighterInfo.Stance"/>
+        @if (IsPropertyOutdated("FighterInfo.Stance"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="hometown">Home Town</label>
+        <InputText id="hometown" @bind-Value="fighter.FighterInfo.HomeTown" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.HomeTown"/>
+        @if (IsPropertyOutdated("FighterInfo.HomeTown"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="fightingoutof">Fighting Out Of</label>
+        <InputText id="fightingoutof" @bind-Value="fighter.FighterInfo.FightingOutOf" class="form-control"/>
+        <ValidationMessage For="() => fighter.FighterInfo.FightingOutOf"/>
+        @if (IsPropertyOutdated("FighterInfo.FightingOutOf"))
+        {
+            <span class="text-warning">⚠️ Outdated</span>
+        }
+    </div>
+
+    <!-- Perks Section -->
+    <h3 class="mb-4">Perks</h3>
+    <div class="row">
+        <div class="col">
+            <div class="form-group mb-3">
+                <label for="perksSearch">Search and Select Perks</label>
+                <input id="perksSearch" type="text" class="form-control mb-2" placeholder="Search Perks..."
+                       @bind="searchTerm" @bind:event="oninput"/>
+                <div class="border rounded" style="max-height: 300px; overflow-y: auto;">
+                    @foreach (var perk in FilteredPerks)
+                    {
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input"
+                                   @onchange="() => TogglePerkSelection(perk)"
+                                   checked="@fighter.Perks.Contains(perk)"/>
+                            <label class="form-check-label">@perk.GetDisplayName()</label>
+                        </div>
+                    }
+                </div>
+                <ValidationMessage For="() => fighter.Perks"/>
+                @if (IsPropertyOutdated("Perks"))
+                {
+                    <span class="text-warning">⚠️ Outdated</span>
+                }
+            </div>
+
+        </div>
+        <div class="col">
+            @if (fighter.Perks != null && fighter.Perks.Count > 0)
+            {
+                <p class="fw-bold mt-4">Selected Perks</p>
+                <div class="row">
+                    @foreach (var perk in fighter.Perks)
+                    {
+                        <p class="">@perk.GetDisplayName() </p>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Top Moves Section -->
+    <h3 class="mb-4">Top Moves</h3>
+    @if (IsPropertyOutdated("TopMoves"))
+    {
+        <span class="text-warning">⚠️ Outdated</span>
+    }
+    <div class="form-group mb-3">
+        @foreach (var topMove in fighter.TopMoves)
+        {
+            <div class="mb-2" @key="topMove">
+                <label>Move Name</label>
+                <InputText @bind-Value="topMove.MoveName" class="form-control" required/>
+                <ValidationMessage For="@(() => topMove.MoveName)"/>
+
+                <label>Stars</label>
+                <InputNumber @bind-Value="topMove.Stars" min="1" max="5" class="form-control"/>
+                <ValidationMessage For="@(() => topMove.Stars)"/>
+
+                <button type="button" class="btn btn-warning" @onclick="() => RemoveTopMove(topMove)">Remove</button>
+            </div>
+        }
+        <button type="button" class="btn btn-primary" @onclick="AddTopMove">Add Top Move</button>
+    </div>
+
+    <!-- Submit and Cancel Buttons -->
+    <br/>
+    @if (fighter.IsOutdated)
+    {
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateOutdatedModal">
+            Update
+        </button>
+
+        <div class="modal fade" id="updateOutdatedModal" tabindex="-1" aria-labelledby="updateOutdatedModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">
+                            Thank you for updating this Fighter!
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group mb-3">
+                            <p>Resolve this fighter in "Fighter Requests" page?</p>
+                            <InputCheckbox @bind-Value="isResolveFighter"/>
+                            <label for="resolve" class="me-2">Yes</label>
+                            @if (isResolveFighter && isStillOudated)
+                            {
+                                <h4 class="mt-4">Required stats to be updated:</h4>
+                                @foreach(var stat in needToBeChanged)
+                                {
+                                    <li>@stat</li>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success">Update</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <button type="submit" class="btn btn-primary">Update</button>
+    }
+    &nbsp;
+    <a href="/fighter/@Id" class="btn btn-secondary">Cancel</a>
+
+
+    <!-- Delete Modal -->
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        delete
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    Are you sure you want to delete @fighter.GetFullName()?
+
+                    @if (fighter.AlterEgos.Count > 0)
+                    {
+                        <p>The Following Alter Egos will be deleted as well:</p>
+                        @foreach (var ego in fighter.AlterEgos)
+                        {
+                            <li>@ego.GetFullName()</li>
+                        }
+                    }
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" @onclick="Delete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Delete Modal -->
+
+    </EditForm>
+}
+else if (isAuthenticated)
+{
+    <NotAuthorized/>
+}
+else
+{
+    <NotAuthenticated/>
+}

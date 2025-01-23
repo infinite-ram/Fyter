@@ -1,0 +1,192 @@
+@* Cardio and Chin *@
+<div class="row mb-4">
+    @* Cardio *@
+    <div class="col">
+        <label class="form-label">Cardio</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinCardio"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxCardio"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetCardio" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Chin *@
+    <div class="col">
+        <label class="form-label">Chin</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinChin"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxChin"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetChin" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Body and Legs *@
+<div class="row mb-4">
+    @* Body *@
+    <div class="col">
+        <label class="form-label">Body</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinBody"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxBody"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetBody" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Legs *@
+    <div class="col">
+        <label class="form-label">Legs</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinLegs"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxLegs"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetLegs" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+@* Recovery and Cut Resistant *@
+<div class="row mb-4">
+    @* Recovery *@
+    <div class="col">
+        <label class="form-label">Recovery</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinRecovery"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxRecovery"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetRecovery" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+
+    @* Cut Resistant *@
+    <div class="col">
+        <label class="form-label">Cut Resistant</label>
+        <div class="input-group input-group-sm">
+           <input
+               type="number"
+               placeholder="Min"
+               class="form-control"
+               @bind="HealthFilter.MinCutResistant"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+
+           <input
+               type="number"
+               placeholder="Max"
+               class="form-control"
+               @bind="HealthFilter.MaxCutResistant"
+               @bind:event="oninput"
+               @bind:after="HandleFilter"
+               min="0"
+               max="100" />
+                  <i onclick="@ResetCutResistant" class="bi bi-x-circle btn btn-secondary"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row d-flex mx-auto mt-5">
+    <div class="col">
+        <button
+            type="button"
+            class="btn btn-primary "
+            data-bs-dismiss="offcanvas"
+            aria-label="Close">
+                View Fighters
+        </button>
+    </div>
+
+    <div class="col">
+        <button
+            type="button"
+            onclick="@Reset"
+            class="btn btn-warning"
+            aria-label="Close">
+               Reset Filter
+        </button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6 mx-auto">
+            @if(!string.IsNullOrWhiteSpace(Title))
+            {
+                <h3 class="text-center font-weight-bold mb-3"><strong class="me-3">@Title</strong>@SubTitle</h3>
+            }
+            <div class="search-box input-group input-group-lg">
+                <span class="input-group-text" style="background-color: #d5d5d5;">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input
+                    class="form-control form-control-lg"
+                    type="search"
+                    autofocus @bind="nameFilter"
+                    @bind:event="oninput"
+                    @bind:after="InvokeOnSearchInput"
+                    placeholder="Search Fighters" />
+            </div>
+            <div class="text-end mt-2">
+                Total: <strong>@TotalResults results found</strong>
+            </div>
+        </div>
+    </div>
+</div>

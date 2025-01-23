@@ -1,0 +1,21 @@
+<div class="form-group">
+    <label>Search Base Fighter</label>
+    <input
+        type="text"
+        class="form-control"
+        @bind="searchQuery"
+        @bind:event="oninput"
+        placeholder="@Placeholder" />
+
+    @if (filteredFighters.Any())
+    {
+        <ul class="list-group" style="max-height: 150px; overflow-y: auto;">
+            @foreach (var fighter in filteredFighters)
+            {
+                <li class="list-group-item list-group-item-action" @onclick="() => SelectFighter(fighter.FighterId)">
+                    @fighter.GetFullName()
+                </li>
+            }
+        </ul>
+    }
+</div>

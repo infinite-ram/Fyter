@@ -1,0 +1,16 @@
+<div class="form-group mb-3">
+	<label for="fighterType">Is Alter Ego? </label>
+	<InputCheckbox @bind-Value="IsAlterEgo"/>
+</div>
+
+@if (IsAlterEgo)
+{
+	<div class="form-group mb-3">
+		<SearchFighterComponent OnFighterSelected="HandleFighterSelected" SelectedFighter="selectedBaseFighter"/>
+	</div>
+}
+
+@if (selectedBaseFighter != null)
+{
+	<p>Selected Base Fighter: @selectedBaseFighter.GetFullName()</p>
+}

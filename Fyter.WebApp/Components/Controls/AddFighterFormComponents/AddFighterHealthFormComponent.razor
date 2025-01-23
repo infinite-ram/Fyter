@@ -1,0 +1,13 @@
+<h3 class="mb-4">Health</h3>
+@foreach (var prop in typeof(HealthDto).GetProperties())
+{
+    var stat = (StatDto)prop.GetValue(_fighterDto.Health);
+    <div class="form-group mb-3">
+        <label>@prop.Name</label>
+        <InputNumber @bind-Value="stat.Value" class="form-control" autocomplete="on"/>
+        <ValidationMessage For="@(() => stat.Value)"/>
+        <label>@prop.Name Stars</label>
+        <InputNumber @bind-Value="stat.Stars" min="0" max="5" class="form-control" autocomplete="on"/>
+        <ValidationMessage For="@(() => stat.Stars)"/>
+    </div>
+}

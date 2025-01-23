@@ -1,0 +1,13 @@
+/* ::deep .sticky-col { */
+/*   position: sticky; */
+/*   top: 100px; */
+/*   z-index: 10; */
+/* } */
+
+.fa-pencil::before {
+  font-size: 17px;
+}
+
+.ctrl-panel a {
+  margin-bottom: 10px;
+}

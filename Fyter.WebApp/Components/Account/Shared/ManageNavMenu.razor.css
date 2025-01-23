@@ -1,0 +1,7 @@
+﻿ul.nav > .nav-item > .nav-link {
+  color: #0a57f8 !important;
+}
+
+ul.nav > .nav-item > .nav-link.active {
+  color: white !important;
+}

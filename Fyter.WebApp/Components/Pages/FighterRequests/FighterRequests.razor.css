@@ -1,0 +1,51 @@
+::deep .quickgrid[theme="responsive"] {
+  width: 100%;
+  font-size: 117%;
+}
+
+#delete {
+  color: red;
+}
+
+#delete:hover {
+  background-color: red;
+  color: white;
+}
+
+/* Apply styles specifically to QuickGrid with theme "responsive" */
+::deep .quickgrid[theme="responsive"] th,
+::deep .quickgrid[theme="responsive"] td {
+  display: table-cell;
+  padding: 8px; /* Add padding to each cell */
+}
+
+::deep .quickgrid[theme="responsive"] .fighter-name {
+  width: 30%;
+}
+
+::deep .quickgrid[theme="responsive"] .col-title {
+  font-weight: bold;
+}
+
+/* Hide all columns except "Fighter Name" on smaller screens */
+@media (max-width: 768px) {
+  ::deep .quickgrid[theme="responsive"] {
+    width: 100%;
+  }
+  ::deep .quickgrid[theme="responsive"] .fighter-style,
+  ::deep .quickgrid[theme="responsive"] .fighter-stars,
+  ::deep .quickgrid[theme="responsive"] .punch-speed,
+  ::deep .quickgrid[theme="responsive"] .kick-speed,
+  ::deep .quickgrid[theme="responsive"] .cardio,
+  ::deep .quickgrid[theme="responsive"] .division {
+    display: none;
+  }
+}
+
+.btn-success {
+  background-color: #14a085;
+}
+
+.btn-success:hover {
+  background-color: #0e8d74;
+}
