@@ -5,6 +5,7 @@ using Fyter.WebApp.Components;
 using Fyter.WebApp.Extensions;
 using Fyter.WebApp.Services;
 using Fyter.WebApp.Services.Interfaces;
+using Fyter.WebApp.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +40,7 @@ if (app.Environment.IsDevelopment())
     await app.SeedDevelopmentEnvironmentDataAsync();
 
 await app.ApplyDbContextMigrationsAsync();
+
 await app.SeedInitialAdminInProdAsync(builder.Configuration);
 
 await app.EnsureRolesExistAsync();

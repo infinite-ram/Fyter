@@ -9,3 +9,6 @@ UFC.WebApp/Data/*.db*
 UFC.WebApp/Data/*.db-*
 UFC.WebApp/Data/*.db-shm
 UFC.WebApp/Data/*.db-wal
+
+**/*.db-*
+**/*.db
