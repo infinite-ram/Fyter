@@ -4,5 +4,8 @@
 **/.idea/
 IMS.Plugins/IMS.Plugins.EFCoreSqlite/Migrations
 UFC.sln.DotSettings.user
-UFC.WebApp/Data/*.db*
 UFC.WebApp/Data/*.db
+UFC.WebApp/Data/*.db*
+UFC.WebApp/Data/*.db-*
+UFC.WebApp/Data/*.db-shm
+UFC.WebApp/Data/*.db-wal
