@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
-using SendGrid;
-using SendGrid.Helpers.Mail;
 using Fyter.WebApp.Data;
+using System.Net.Mail;
+using System.Net;
 
 namespace Fyter.WebApp.Components.Account;
 
@@ -49,38 +49,37 @@ internal sealed class IdentityEmailSender : IEmailSender<ApplicationUser>
         string htmlContent
     )
     {
-        var apiKey = _configuration["SendGrid:ApiKey"];
-        if (string.IsNullOrEmpty(apiKey))
+        // Pull SMTP settings from appsettings.json
+        var host = _configuration["Smtp:Host"];
+        var port = int.Parse(_configuration["Smtp:Port"] ?? "587");
+        var smtpUser = _configuration["Smtp:Username"];
+        var smtpPass = _configuration["Smtp:Password"];
+        var fromEmail = _configuration["Smtp:FromEmail"];
+        var fromName = _configuration["Smtp:FromName"];
+
+        if (string.IsNullOrEmpty(host) || string.IsNullOrEmpty(smtpUser) || string.IsNullOrEmpty(smtpPass))
         {
-            throw new InvalidOperationException("SendGrid API key is not configured.");
+            throw new InvalidOperationException("SMTP settings are not configured properly.");
         }
 
-        var client = new SendGridClient(apiKey);
-
-        var fromEmail = new EmailAddress(
-            _configuration["SendGrid:FromEmail"],
-            _configuration["SendGrid:FromName"]
-        );
-        var toEmail = new EmailAddress(email, userName);
-
-        var msg = MailHelper.CreateSingleEmail(
-            fromEmail,
-            toEmail,
-            subject,
-            htmlContent,
-            htmlContent
-        );
-
-        var response = await client.SendEmailAsync(msg).ConfigureAwait(false);
-
-        if (
-            response.StatusCode != System.Net.HttpStatusCode.OK
-            && response.StatusCode != System.Net.HttpStatusCode.Accepted
-        )
+        // Create the mail message
+        var message = new MailMessage
         {
-            throw new InvalidOperationException(
-                $"Failed to send email. Status Code: {response.StatusCode}"
-            );
-        }
+            From = new MailAddress(fromEmail, fromName),
+            Subject = subject,
+            Body = htmlContent,
+            IsBodyHtml = true
+        };
+        message.To.Add(new MailAddress(email, userName));
+
+        // Configure the SMTP client
+        using var smtpClient = new SmtpClient(host, port)
+        {
+            Credentials = new NetworkCredential(smtpUser, smtpPass),
+            EnableSsl = true
+        };
+
+        // Send the email
+        await smtpClient.SendMailAsync(message);
     }
 }
