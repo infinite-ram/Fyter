@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using Microsoft.AspNetCore.Components;
 using Fyter.CoreBusiness.Filters;
 using Fyter.UseCases.PluginInterfaces;
+using Microsoft.AspNetCore.Components;
 
 namespace Fyter.WebApp.Components.Controls.FiltersComponents;
 

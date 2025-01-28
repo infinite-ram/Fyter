@@ -161,13 +161,13 @@ public class FighterFilterRepository : IFighterFilterRepository
 
     public async Task ResetStandUpFilters()
     {
-        _standUpFilter = new FighterStandUpFilter();
+        await SetStandUpFilter(new FighterStandUpFilter());
         await ApplyFilters();
     }
 
     public async Task ResetGrapplingFilters()
     {
-        _grapplingFilter = new FighterGrapplingFilter();
+        SetGrapplingFilter(new FighterGrapplingFilter());
         await ApplyFilters();
     }
 
@@ -178,7 +178,7 @@ public class FighterFilterRepository : IFighterFilterRepository
 
     public async Task ResetHealthFilters()
     {
-        _healthFilter = new FighterHealthFilter();
+        SetHealthFilter(new FighterHealthFilter());
         await ApplyFilters();
     }
 
